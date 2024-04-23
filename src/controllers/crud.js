@@ -31,3 +31,14 @@ exports.insert = (req, res) => {
    );
 };
 
+exports.update = (req, res) => {
+   mysql.query(
+      'UPDATE todos SET description=? WHERE(id=?)', [ req.body.description, req.body.id ],
+      function(err, results, fields) {
+         if(err) throw new Error('Update error');
+         return res.status(200).json({ status: 'updated successfuly' }).end();
+      }
+   );
+};
+
+

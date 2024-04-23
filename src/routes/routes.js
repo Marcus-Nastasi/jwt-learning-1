@@ -15,5 +15,7 @@ routes.get('/api/:id', jwt.jwtAuth, crud.readSingle);
 
 routes.post('/api/insert', jwt.jwtAuth, crud.insert);
 
+routes.put('/api/update', jwt.jwtAuth, crud.update);
+
 module.exports = routes;
 
