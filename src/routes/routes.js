@@ -17,5 +17,7 @@ routes.post('/api/insert', jwt.jwtAuth, crud.insert);
 
 routes.put('/api/update', jwt.jwtAuth, crud.update);
 
+routes.delete('/api/delete/:id', jwt.jwtAuth, crud.delete);
+
 module.exports = routes;
 

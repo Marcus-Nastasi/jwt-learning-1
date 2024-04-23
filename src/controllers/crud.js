@@ -41,4 +41,13 @@ exports.update = (req, res) => {
    );
 };
 
+exports.delete = (req, res) => {
+   mysql.query(
+      'DELETE FROM todos WHERE(id=?)', [ req.params.id ],
+      function(err, results, fields) {
+         if(err) throw new Error('Delete error');
+         return res.status(200).json({ status: 'deleted successfuly' }).end();
+      }
+   );
+};
 
