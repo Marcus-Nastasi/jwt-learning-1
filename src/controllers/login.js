@@ -1,0 +1,11 @@
+const jwt = require('jsonwebtoken');
+
+exports.login = (req, res) => {
+   if(req.body.user == process.env.LOGUSER && req.body.password == process.env.PASS) {
+      const token = jwt.sign({ user_id: process.env.USERID }, process.env.SEC, { expiresIn: 2000 });
+      return res.status(200).json({ user_id: process.env.USERID, loged: true, token });
+   };
+
+   return res.status(401).json({ status: 'unauthorized login' });
+};
+
