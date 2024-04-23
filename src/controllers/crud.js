@@ -21,3 +21,13 @@ exports.readSingle = (req, res) => {
    );
 };
 
+exports.insert = (req, res) => {
+   mysql.query(
+      'INSERT INTO todos(description) VALUES(?)', [ req.body.description ],
+      function(err, results, fields) {
+         if(err) throw new Error('Insert error');
+         return res.status(200).json({ status: 'value inserted successfuly' }).end();
+      }
+   );
+};
+
