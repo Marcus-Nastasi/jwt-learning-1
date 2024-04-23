@@ -7,9 +7,9 @@ const jwt = require('../middlewares/jwt');
 
 routes.get('/', index.index);
 
-routes.get('/api', jwt.jwtAuth, crud.readAll);
-
 routes.post('/login', login.login);
+
+routes.get('/api', jwt.jwtAuth, crud.readAll);
 
 module.exports = routes;
 
