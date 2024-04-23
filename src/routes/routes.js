@@ -11,5 +11,7 @@ routes.post('/login', login.login);
 
 routes.get('/api', jwt.jwtAuth, crud.readAll);
 
+routes.get('/api/:id', jwt.jwtAuth, crud.readSingle);
+
 module.exports = routes;
 

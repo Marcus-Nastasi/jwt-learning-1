@@ -5,7 +5,7 @@ exports.login = (req, res) => {
       const token = jwt.sign({ user_id: process.env.USERID }, process.env.SEC, { expiresIn: '10m' });
       req.session.user_id = process.env.USERID;
       req.session.token = token;
-      return res.status(200).json({ user_id: process.env.USERID, loged: true, token });
+      return res.status(200).json({ user_id: req.session.user_id, loged: true, token });
    };
 
    return res.status(401).json({ status: 'unauthorized login' });
