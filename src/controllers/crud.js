@@ -5,7 +5,7 @@ exports.readAll = (req, res) => {
       'SELECT * FROM todos',
       function(err, results, fields) {
          if(err) throw new Error('Read all error');
-         return res.status(200).json(results);
+         return res.status(200).json(results).end();
       }
    );
 };

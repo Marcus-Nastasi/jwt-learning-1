@@ -5,7 +5,7 @@ exports.jwtAuth = (req, res, next) => {
    const token = req.session.token;
 
    jwt.verify(token, process.env.SEC, (err, decoded) => {
-      if(err) return res.status(401).json({ status: 'unauthorized token' }).end();
+      if(err) return res.status(401).json({ status: 'invalid token' }).end();
       req.body.user_id = decoded.user_id;
       next();
    });
