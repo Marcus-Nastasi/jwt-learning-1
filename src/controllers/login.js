@@ -8,7 +8,7 @@ exports.login = (req, res) => {
       req.session.token = token;
 
       res.cookie("token", token, {
-         httpOnly: true
+         httpOnly: false
       })
 
       return res.status(200).json({ user_id: req.session.user_id, loged: true, token });
