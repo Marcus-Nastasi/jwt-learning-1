@@ -6,10 +6,14 @@ exports.login = (req, res) => {
 
       req.session.user_id = process.env.USERID;
       req.session.token = token;
-      
-      return res.status(200).json({ user_id: req.session.user_id, loged: true, token }).end();
-   };
 
+      res.cookie("token", token, {
+         httpOnly: true
+      })
+
+      return res.status(200).json({ user_id: req.session.user_id, loged: true, token });
+   };
+   
    return res.status(401).json({ status: 'unauthorized login' }).end();
 };
 

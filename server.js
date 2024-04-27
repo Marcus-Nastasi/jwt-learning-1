@@ -3,6 +3,7 @@ const express = require('express');
 const routes = require('./src/routes/routes');
 const app = express();
 const session = require('express-session');
+const cors = require('cors');
 
 const sessionOptions = session({
    secret: process.env.SESSIONSECRETE,
@@ -15,9 +16,11 @@ const sessionOptions = session({
 });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(sessionOptions);
 
+app.use(cors({ origin: "*" }));
 app.use(routes);
 
 app.listen(process.env.PORT);
