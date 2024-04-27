@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(sessionOptions);
 
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(routes);
 
 app.listen(process.env.PORT);
